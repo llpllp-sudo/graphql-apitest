@@ -1,0 +1,77 @@
+# GraphQL API Test Architecture
+
+This document describes the application architecture and the automated test framework built to validate the GraphQL endpoints. Noticeably absent are UI or client-side interactions; our focus is strictly on the API layer.
+
+## 1. Application Architecture
+
+The application under test is the **SpaceX GraphQL API**. This serves as a representative example of a modern, data-dense backend service (similar to banking or financial technology environments).
+
+*   **Endpoint:** The API is structured around a single `/graphql` endpoint accessed via HTTP POST.
+*   **Architecture Paradigm:** The client is responsible for defining the shape and depth of the response data using queries, significantly reducing over-fetching of unnecessary data compared to traditional REST APIs.
+*   **Response Standards:** In GraphQL, even if parts of a query fail to resolve, the HTTP response status code is generally `200 OK`. The standard payload includes:
+    *   `"data"` object: Contains successfully resolved fields.
+    *   `"errors"` array (optional): Lists details regarding missing or failed resolver requests.
+
+## 2. Test Framework Architecture
+
+The test architecture is designed to validate GraphQL interactions reliably using industry-standard tooling tightly aligned with modern frontend and backend tech stacks (Node.js, TypeScript).
+
+### 2.1 Technology Stack
+
+*   **Language:** **TypeScript**. Chosen for structural typing, ensuring compile-time safety and self-documenting code.
+*   **Test Runner:** **Jest**. Widely adopted in the JavaScript/TypeScript ecosystem for its speed, parallel execution, built-in assertion library (`expect`), and mocking capabilities.
+*   **HTTP Assertion:** **Supertest**. Integrates natively with Jest to facilitate programmatic HTTP requests against the `/graphql` endpoint.
+
+### 2.2 Framework Structure
+
+The framework is lightweight and structured to easily scale:
+
+```text
+GraphQL-APITest/
+├── __tests__/                     
+│   ├── mutations.test.ts        # Mutation and Authorization testing
+│   ├── queries.test.ts          # Advanced Query data/empty state testing
+│   ├── schema.test.ts           # Schema and Input typing validation
+│   ├── security.test.ts         # Security, Depth, and Partial Error testing
+│   └── spacex.graphql.test.ts   # Core functional test definitions
+├── config/                      
+│   └── env.ts                   # Centralized Environment Variables
+├── src/                         
+│   ├── client/                  
+│   │   └── graphqlClient.ts     # Reusable HTTP wrapper logic
+│   ├── graphql/                 
+│   │   └── queries/             
+│   │       └── spacex.queries.ts# Reusable exact GraphQL template strings
+│   └── types/                   
+│       └── spacex.types.ts      # Strict TypeScript Payload interfaces
+├── jest.config.js               # Jest environment settings
+├── tsconfig.json                # TypeScript compiler settings
+└── package.json                 # Dependency management and test scripts
+```
+
+### 2.3 Comprehensive Test Coverage Pillars
+
+Testing a GraphQL API requires strategies not typically used in REST testing. The enterprise test suites cover four major pillars:
+
+#### 1. Schema & Validation (`schema.test.ts`)
+Ensuring the API's contract strictly validates faulty incoming requests before attempting execution.
+*   **Strategy:** Test undefined fields, missing required arguments, and type-mismatching arguments (e.g., sending Strings to Int fields). Verify the API correctly rejects these with a GraphQL `HTTP 200` containing an `errors` array, rather than unhandled server crashes.
+
+#### 2. Advanced Queries (`queries.test.ts`)
+Validating that read operations accurately handle complex structures and filters.
+*   **Strategy:** Validate field selection (no data leakage), deep relational nesting, filtering (using arguments like `limit`), and explicitly testing Empty States (ensuring valid queries with no downstream records mathematically gracefully return `[]` or `null` instead of crashing).
+
+#### 3. Mutations (`mutations.test.ts`)
+Validating write operations and security restrictions on modification endpoints.
+*   **Strategy:** Test mutation syntax payload validation and verify authorization/authentication blocks correctly reject unauthorized writes (e.g., ensuring disabled mutations return explicitly mapped security rejection payloads instead of internal proxy timeouts).
+
+#### 4. Error Handling & Security (`security.test.ts`)
+Proving the API is resilient against malicious queries and unpredictable proxy architectures.
+*   **Strategy:** Test "Partial Success" by querying valid entities alongside invalid fake IDs across relations to demonstrate resilient partial data resolution over unified REST endpoints. Implement "Query Depth Limiting" checks by sending maliciously infinite relational loops (Rockets -> Engines -> ...) to ensure API architectural stability under exhaustion attempts.
+
+## 3. Execution flow
+
+1.  **Trigger:** `npm test` runs the Jest CLI.
+2.  **Compilation:** `ts-jest` executes, parsing the `.ts` files on the fly into CommonJS syntax as defined by `tsconfig.json`.
+3.  **HTTP Request:** `supertest` intercepts the commands, POSTs the raw query string inside a JSON body to `https://spacex-production.up.railway.app/`.
+4.  **Assertion:** `Jest` captures the GraphQL payload, validates `response.status === 200`, inspects the `response.body.data` for exact object properties, and ensures no unhandled exceptions exist in `response.body.errors`.
