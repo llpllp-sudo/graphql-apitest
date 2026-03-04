@@ -7,3 +7,6 @@ dist/
 target/
 
 jbang/
+
+*.zip
+*.txt
