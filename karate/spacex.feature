@@ -19,7 +19,7 @@ Scenario: Verify basic company information query
   And request { query: '#(query)' }
   When method POST
   Then status 200
-  And match response.data.company.name == 'SpaceY'
+  And match response.data.company.name == 'SpaceX'
   And match response.data.company.founder == 'Elon Musk'
   And match response.data.company.founded == 2002
   And match response.data.company.employees == '#number'
