@@ -1,0 +1,83 @@
+npm verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+npm info using npm@11.6.2
+npm info using node@v25.2.1
+npm verbose title npm install @karatelabs/karate
+npm verbose argv "install" "--save-dev" "@karatelabs/karate" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:C:\Users\shawn\AppData\Local\npm-cache\_logs\2026-03-04T21_15_41_756Z-
+npm verbose logfile C:\Users\shawn\AppData\Local\npm-cache\_logs\2026-03-04T21_15_41_756Z-debug-0.log
+npm verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+npm http cache https://registry.npmjs.org/@karatelabs%2fkarate 77ms (cache hit)
+npm http cache https://registry.npmjs.org/@jbangdev%2fjbang 41ms (cache hit)
+npm http cache https://registry.npmjs.org/shelljs 7ms (cache hit)
+npm http cache https://registry.npmjs.org/glob 10ms (cache hit)
+npm http cache https://registry.npmjs.org/interpret 14ms (cache hit)
+npm http cache https://registry.npmjs.org/rechoir 15ms (cache hit)
+npm http cache https://registry.npmjs.org/resolve 11ms (cache hit)
+npm http cache https://registry.npmjs.org/minimatch 15ms (cache hit)
+npm http cache https://registry.npmjs.org/supports-preserve-symlinks-flag 10ms (cache hit)
+npm http cache https://registry.npmjs.org/path-parse 12ms (cache hit)
+npm http cache https://registry.npmjs.org/is-core-module 13ms (cache hit)
+npm http cache https://registry.npmjs.org/brace-expansion 10ms (cache hit)
+npm http cache supports-preserve-symlinks-flag@https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz 0ms (cache hit)
+npm http cache is-core-module@https://registry.npmjs.org/is-core-module/-/is-core-module-2.16.1.tgz 0ms (cache hit)
+npm http cache path-parse@https://registry.npmjs.org/path-parse/-/path-parse-1.0.7.tgz 0ms (cache hit)
+npm http cache resolve@https://registry.npmjs.org/resolve/-/resolve-1.22.11.tgz 0ms (cache hit)
+npm http cache rechoir@https://registry.npmjs.org/rechoir/-/rechoir-0.6.2.tgz 0ms (cache hit)
+npm http cache interpret@https://registry.npmjs.org/interpret/-/interpret-1.4.0.tgz 0ms (cache hit)
+npm http cache shelljs@https://registry.npmjs.org/shelljs/-/shelljs-0.8.5.tgz 0ms (cache hit)
+npm http cache @jbangdev/jbang@https://registry.npmjs.org/@jbangdev/jbang/-/jbang-0.2.3.tgz 0ms (cache hit)
+npm http cache brace-expansion@https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.12.tgz 0ms (cache hit)
+npm http cache @karatelabs/karate@https://registry.npmjs.org/@karatelabs/karate/-/karate-0.3.2.tgz 0ms (cache hit)
+npm http cache minimatch@https://registry.npmjs.org/minimatch/-/minimatch-3.1.5.tgz 0ms (cache hit)
+npm http cache glob@https://registry.npmjs.org/glob/-/glob-7.2.3.tgz 0ms (cache hit)
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 294ms
+npm info run @jbangdev/jbang@0.2.3 preinstall node_modules/@jbangdev/jbang node preinstall.js
+npm info run @karatelabs/karate@0.3.2 preinstall node_modules/@karatelabs/karate node preinstall.js
+npm info run @jbangdev/jbang@0.2.3 preinstall { code: 1, signal: null }
+npm info run @karatelabs/karate@0.3.2 preinstall { code: 1, signal: null }
+npm verbose stack Error: command failed
+npm verbose stack     at promiseSpawn (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:22:22)
+npm verbose stack     at spawnWithShell (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:124:10)
+npm verbose stack     at promiseSpawn (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:12:12)
+npm verbose stack     at runScriptPkg (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\run-script\lib\run-script-pkg.js:79:13)
+npm verbose stack     at runScript (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\run-script\lib\run-script.js:9:12)
+npm verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\rebuild.js:332:17
+npm verbose stack     at run (C:\Program Files\nodejs\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:67:22)
+npm verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:84:9
+npm verbose stack     at new Promise (<anonymous>)
+npm verbose stack     at callLimit (C:\Program Files\nodejs\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:35:69)
+npm verbose pkgid @jbangdev/jbang@0.2.3
+npm error code 1
+npm error path K:\CodeRepo\GraphQL-APITest\node_modules\@jbangdev\jbang
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node preinstall.js
+npm error pre-installing jbang ...
+npm error <3>WSL (3389 - Relay) ERROR: CreateProcessCommon:800: execvpe(/bin/bash) failed: No such file or directory
+npm error K:\CodeRepo\GraphQL-APITest\node_modules\@jbangdev\jbang\jbang.js:28
+npm error 		throw err;
+npm error 		^
+npm error
+npm error Error: The command failed: 'jbang app setup'. Code: 1
+npm error     at jbang.exec (K:\CodeRepo\GraphQL-APITest\node_modules\@jbangdev\jbang\jbang.js:24:15)
+npm error     at Object.<anonymous> (K:\CodeRepo\GraphQL-APITest\node_modules\@jbangdev\jbang\preinstall.js:3:7)
+npm error     at Module._compile (node:internal/modules/cjs/loader:1760:14)
+npm error     at Object..js (node:internal/modules/cjs/loader:1892:10)
+npm error     at Module.load (node:internal/modules/cjs/loader:1480:32)
+npm error     at Module._load (node:internal/modules/cjs/loader:1299:12)
+npm error     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+npm error     at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+npm error     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+npm error     at node:internal/main/run_main_module:33:47 {
+npm error   code: 1,
+npm error   cause: '<3>WSL (3389 - Relay) ERROR: CreateProcessCommon:800: execvpe(/bin/bash) failed: No such file or directory\n'
+npm error }
+npm error
+npm error Node.js v25.2.1
+npm verbose cwd K:\CodeRepo\GraphQL-APITest
+npm verbose os Windows_NT 10.0.26200
+npm verbose node v25.2.1
+npm verbose npm  v11.6.2
+npm verbose exit 1
+npm verbose code 1
+npm error A complete log of this run can be found in: C:\Users\shawn\AppData\Local\npm-cache\_logs\2026-03-04T21_15_41_756Z-debug-0.log
