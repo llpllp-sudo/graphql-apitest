@@ -23,6 +23,11 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
+    - name: Install JBang
+      run: |
+        curl -Ls https://sh.jbang.dev | bash -s - app setup
+        echo "$HOME/.jbang/bin" >> $GITHUB_PATH
+
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
