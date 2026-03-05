@@ -21,7 +21,7 @@ The test architecture is designed to validate GraphQL interactions reliably usin
 *   **Language:** **TypeScript**. Chosen for structural typing, ensuring compile-time safety and self-documenting code.
 *   **Test Runner:** **Jest**. Widely adopted in the JavaScript/TypeScript ecosystem for its speed, parallel execution, built-in assertion library (`expect`), and mocking capabilities.
 *   **HTTP Assertion:** **Supertest**. Integrates natively with Jest to facilitate programmatic HTTP requests against the `/graphql` endpoint.
-*   **Behavior Driven Development (BDD) & API Testing:** **Karate Framework**. Used for high-level functional tests, schema validation, and generating rich, interactive HTML reports. It runs via a lightweight JBang wrapper to avoid heavy Java environmental setups.
+*   **Behavior Driven Development (BDD) & API Testing:** **Karate Framework**. Used for high-level functional tests, schema validation, and generating rich, interactive HTML reports. It runs via a standalone JBang wrapper (instead of a brittle npm package) to avoid Java environmental setup issues.
 
 ### 2.2 Framework Structure
 
